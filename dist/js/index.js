@@ -8,7 +8,7 @@ const navbar=`
 </div>
 <nav>
   <ul class="navbar">
-    <li v-for="tab in tabs"><a :href="tab.path">{{tab.name}}</a></li>
+    <li v-for="tab in tabs"><a :id='tab.id' class="btn" :href="tab.path">{{tab.name}}</a></li>
   </ul>
 </nav>
 `
@@ -22,11 +22,11 @@ const app = Vue.createApp({
   data(){
     return{
       tabs:[
-        {name:'Accueil',path:'index.html'},
-        {name:'Formation',path:'formation.html'},
-        {name:'Equipe',path:'equipe.html'},
-        {name:'Contacter-nous',path:'contact.html'},
-        {name:'Connexion',path:'connect.html'},
+        {id:'1',name:'Accueil',path:'index.html'},
+        {id:'2',name:'Formation',path:'formation.html'},
+        {id:'3',name:'Equipe',path:'equipe.html'},
+        {id:'4',name:'Contacter-nous',path:'contact.html'},
+        {id:'5',name:'Connexion',path:'connect.html'},
       ]
     }
   }
@@ -34,16 +34,17 @@ const app = Vue.createApp({
     template:`
     <div>
       <div>
-        <fieldset>
-          <div>
-            <button :id="cour.id" :key="cour.id" v-for="cour in cours">{{cour.name}}</button>
+        <div class="border border-info">
+          <div class="matieres" v-for="cour in cours">
+            <button class="btn btn-danger" :id="cour.id" :key="cour.id" >{{cour.name}}</button>
           </div>
-        </fieldset>
+        </div>
       </div>
-      <div>
-        <fieldset>
-          <p v-for="cour in cours">{{cour.name}}:{{cour.desc}}</p>
-        </fieldset>
+      <div class="desc">
+        <div class="border border-info">
+          <p class="descs" :key="cour.id" :id="cour.id" v-for="cour in cours">
+          <h3>{{cour.name}}:</h3>{{cour.desc}}</p>
+        </div>
       </div>
     </div>`,
     data(){
@@ -60,20 +61,55 @@ const app = Vue.createApp({
 
 }).component('equipe',{
   template: `
-    <div>
+    <div class="profs">
       <p :id="prof.id" v-for='prof in profs'>
-        {{prof.name}}:{{prof.mat}}
+        <img class="imgProfs" :src="prof.img">
+        <h3>{{prof.name}}:</h3>
+        <a class='btn btn-danger' href="formation.html">{{prof.mat}}</a>
       </p>
     </div>
   `,
   data(){
     return{
       profs:[
-        {id:"1",name:"LL",mat:"Math"},
-        {id:"2",name:"Cool",mat:"Physique-chimie"},
-        {id:"3",name:"J",mat:"Anglais"},
-        {id:"4",name:"Eminem",mat:"Musique"},
+        {id:"1",name:"Logic",mat:"Math",img:"../dist/imgs/logic.jpg"},
+        {id:"2",name:"Asap Rocky",mat:"Physique-chimie",img:"../dist/imgs/asap-rocky.jpg"},
+        {id:"3",name:"J Cole",mat:"Anglais",img:"../dist/imgs/j-cole.jpg"},
+        {id:"4",name:"Eminem",mat:"Musique",img:"../dist/imgs/eminem.jpg"},
       ]
     }
   }
+}).component('foot',{
+  template:`
+    <footer class='bg-info mt-auto d-flex justify-content-around'>
+      <p>Pozdnyakov, Duarte 2022</p>
+      <div>
+        <a v-for="a in as" :href="a.path"><img :src="a.src"></a>
+      </div>
+    </footer>
+  `,
+  data(){
+    return{
+      as:[
+        {path:'#',src:'../dist/imgs/facebook.svg'},
+        {path:'#',src:'../dist/imgs/instagram.svg'},
+        {path:'#',src:'../dist/imgs/twitter.svg'},
+        {path:'#',src:'../dist/imgs/youtube.svg'},
+      ],
+    }
+  }
 }).mount('body')
+
+
+function showMat() {
+  $('.matieres button').click(function(){
+    $('.descs').removeClass('activeMat')
+    let id = $(this).attr('id')
+    $('.desc').show()
+    $('.descs').eq(id-1).toggleClass('activeMat')
+  })
+}
+$(document).ready(function(){
+  showMat()
+  $('.navbar li').last().children().addClass('btn bg-warning')
+})

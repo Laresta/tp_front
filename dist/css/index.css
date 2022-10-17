@@ -1,0 +1,9 @@
+header,.navbar{
+  display: flex;
+}
+.navbar{
+  justify-content: space-around;
+}
+nav{
+    width: 100%;
+}

@@ -1,15 +1,25 @@
 const {createApp} = Vue
 
 const navbar=`
+<nav  >
 <div class="">
   <a href="index.html">
   <img src="https://via.placeholder.com/150" alt="">
   </a>
 </div>
-<nav>
-  <ul class="navbar">
-    <li v-for="tab in tabs"><a :id='tab.id' class="btn" :href="tab.path">{{tab.name}}</a></li>
-  </ul>
+  <div>
+    <ul class="navbar">
+      <li v-for="tab in tabs"><a :id='tab.id' class="btn" :href="tab.path">{{tab.name}}</a></li>
+    </ul>
+    <div class=" burger">
+      <button id="hamb"><img src="../dist/imgs/Hamburger.png" /></button>
+      <div class='menu container'>
+      <ul>
+      <li v-for="tab in tabs"><a :id='tab.id' class="btn" :href="tab.path">{{tab.name}}</a></li>
+      </ul>
+      </div>
+    </div>
+  </div>
 </nav>
 `
 const app = Vue.createApp({
@@ -109,7 +119,14 @@ function showMat() {
     $('.descs').eq(id-1).toggleClass('activeMat')
   })
 }
+function hamb(){
+  $('#hamb').click(function(){
+    $('.menu').toggleClass('menuActive')
+  })
+}
 $(document).ready(function(){
   showMat()
+  hamb()
   $('.navbar li').last().children().addClass('btn bg-warning')
+  $('.burger li').last().children().addClass('btn bg-warning')
 })

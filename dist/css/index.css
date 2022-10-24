@@ -31,6 +31,38 @@ li{
   grid-template-columns: repeat(2, 1fr);
   grid-auto-rows: minmax(100px, auto);
 }
+.burger{
+  display:none;
+}
+
+@media screen and (max-width:768px) {
+  .profs{
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-auto-rows: minmax(100px, auto);
+  }
+  .navbar,.menu{
+    display: none;
+  }
+  .burger{
+    display: block;
+  }
+  header{
+    display: flex;
+    justify-content: space-between;
+    z-index: 999;
+  }
+  .menu{
+    position: fixed;
+  }
+  .menu ul{}
+  .menuActive{
+    display:block;
+    background-color: beige;
+    width: 100%;
+  }
+
+}
 .imgProfs{
   height: 250px;
   margin-right: 1.5em;

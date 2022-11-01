@@ -1,25 +1,23 @@
 const {createApp} = Vue
 
 const navbar=`
-<nav  >
-<div class="">
-  <a href="index.html">
-  <img src="https://via.placeholder.com/150" alt="">
-  </a>
-</div>
-  <div>
-    <ul class="navbar">
-      <li v-for="tab in tabs"><a :id='tab.id' class="btn" :href="tab.path">{{tab.name}}</a></li>
-    </ul>
+<nav>
+  <div class="">
+    <a href="index.html">
+      <img src="https://via.placeholder.com/150" alt="">
+    </a>
+  <ul class="navbar">
+  <li v-for="tab in tabs"><a :id='tab.id' class="btn" :href="tab.path">{{tab.name}}</a></li>
+  </ul>
+  </div>
     <div class=" burger">
       <button id="hamb"><img src="../dist/imgs/Hamburger.png" /></button>
-      <div class='menu container'>
+      <div class='menu '>
       <ul>
       <li v-for="tab in tabs"><a :id='tab.id' class="btn" :href="tab.path">{{tab.name}}</a></li>
       </ul>
       </div>
-    </div>
-  </div>
+
 </nav>
 `
 const app = Vue.createApp({
@@ -75,7 +73,7 @@ const app = Vue.createApp({
       <p :id="prof.id" v-for='prof in profs'>
         <img class="imgProfs" :src="prof.img">
         <h3>{{prof.name}}:</h3>
-        <a class='btn btn-danger' href="formation.html">{{prof.mat}}</a>
+        <a class='btn clique btn-danger' href="formation.html">{{prof.mat}}</a>
       </p>
     </div>
   `,
@@ -110,6 +108,20 @@ const app = Vue.createApp({
   }
 }).mount('body')
 
+function showMatProf(){
+  let id
+  $('.clique').each(function(){
+    $('.clique').click(function(){
+      event.preventDefault();
+      console.log()
+    })
+    $(document).ready(function(){
+      console.log(id);
+    })
+  }
+  )
+
+}
 
 function showMat() {
   $('.matieres button').click(function(){
@@ -127,6 +139,7 @@ function hamb(){
 $(document).ready(function(){
   showMat()
   hamb()
+  showMatProf()
   $('.navbar li').last().children().addClass('btn bg-warning')
   $('.burger li').last().children().addClass('btn bg-warning')
 })

@@ -52,9 +52,6 @@ li{
     justify-content: space-between;
     z-index: 999;
   }
-  .menu{
-    position: fixed;
-  }
   .menu ul{}
   .menuActive{
     display:block;

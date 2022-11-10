@@ -2,18 +2,15 @@ const {createApp} = Vue
 
 const navbar=`
 <nav>
-
-  <div class="row">
-    <div class="col-sm-1"></div>
-    <div class="col-sm-1">
+    <div class="d-flex justify-content-between w-100">
       <a href="index.html">
         <img src="../dist/imgs/logo-front.png" alt="">
       </a>
-    </div>
-    <div class="col-sm-10 d-flex flex-column justify-content-center">
       <ul class="navbar">
-        <li v-for="tab in tabs"><a :id='tab.id' class="btn mybtn" :href="tab.path">{{tab.name}}</a></li>
-        </ul>
+      <li v-for="tab in tabs"><a :id='tab.id' class="btn mybtn" :href="tab.path">{{tab.name}}</a></li>
+      </ul>
+    </div>
+    <div class="">
     <div class=" burger">
       <button id="hamb"><img src="../dist/imgs/Hamburger.png" /></button>
 
@@ -24,7 +21,6 @@ const navbar=`
     <li v-for="tab in tabs"><a :id='tab.id' class="btn mybtn" :href="tab.path">{{tab.name}}</a></li>
     </ul>
     </div>
-  </div>
 </nav>
 `
 const app = Vue.createApp({
@@ -130,9 +126,21 @@ function hamb(){
     $('.menu').toggleClass('menuActive')
   })
 }
+
+function showConnect(){
+  $('.ConnectEtud button').click(function(){
+    $(this).hide()
+    $('.ConnectEtud form').show()
+  })
+  $('.ConnectProf button').click(function(){
+    $(this).hide()
+    $('.ConnectProf form').show()
+  })
+}
 $(document).ready(function(){
   showMat()
   hamb()
+  showConnect()
   $('.navbar li').last().children().addClass('btn bg-warning')
   $('.burger li').last().children().addClass('btn bg-warning')
 })

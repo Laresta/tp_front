@@ -54,6 +54,9 @@ footer{
 input[type='submit']{
   margin-top: 1em;
 }
+.menu{
+  display: none;
+}
 @media screen and (max-width:768px) {
   .profs{
     display: grid;
@@ -74,7 +77,6 @@ input[type='submit']{
     justify-content: space-between;
     z-index: 999;
   }
-  .menu ul{}
   .menuActive{
     display:block;
     background-color: beige;

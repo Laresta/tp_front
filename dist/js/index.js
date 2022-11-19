@@ -3,7 +3,7 @@ const {createApp} = Vue
 const navbar=`
 <nav>
     <div class="d-flex justify-content-between w-100">
-      <a href="index.html">
+      <a id="logo" href="index.html">
         <img src="../dist/imgs/logo-front.png" alt="">
       </a>
       <ul class="navbar">

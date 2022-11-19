@@ -95,6 +95,16 @@ input[type='submit']{
     background-color: beige;
     width: 100%;
   }
+  .menuActive ul{
+    margin-top : 0;
+    padding: 0;
+  }
+  nav{
+    margin:0;
+  }
+  #logo{
+    margin-left: 0.5em;
+  }
 
 
 }
